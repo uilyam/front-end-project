@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+    <span>WhatTrucks</span>
+</mat-toolbar>
+<mat-drawer-container class="container">
+  <mat-drawer mode="side" opened *ngIf="trucks$ | async as trucks">
+    <mat-tab-group>
+      <mat-tab label="All">
+        <mat-selection-list (selectionChange)="onSelectionChange($event)">
+          <mat-list-option *ngFor="let truck of trucks" [value]="truck.id">
+            {{truck.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-tab>
+      <mat-tab label="Favorites">
+          <mat-list>
+            <mat-list-item *ngFor="let truck of favoritize(trucks)">
+                {{truck.name}}
+            </mat-list-item>
+          </mat-list>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div *ngIf="trucks$ | async as trucks" style="height: 100%; width: 100%">
+      <app-map [trucks]="trucks"></app-map>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+<router-outlet></router-outlet>
