@@ -1,5 +1,5 @@
 const yelp = require('yelp-fusion');
-const apiKey = '';
+const apiKey = '40hADv-nxnu8GuPus2aYG8_L9R94v43dgugobGKIUXBRlnFrOTS2eqMv-0VuFiWNsK11rTYo9jwUst6xiJ-i_MamRR2iPcLPiTHeg0AGDIv0el6SJr7dqtT1xprvWXYx';
 const express = require('express')
 const router = express.Router()
 const client = yelp.client(apiKey);
@@ -16,18 +16,3 @@ router.get('/', async (req, res) => {
 });
 
 module.exports = router;
-/*
-const searchRequest = {
-  term:'Four Barrel Coffee',
-  location: 'san francisco, ca'
-};
-
-const client = yelp.client(apiKey);
-
-client.search(searchRequest).then(response => {
-  const firstResult = response.jsonBody.businesses[0];
-  const prettyJson = JSON.stringify(firstResult, null, 4);
-  console.log(prettyJson);
-}).catch(e => {
-  console.log(e);
-});*/
